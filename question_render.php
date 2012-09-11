@@ -7,7 +7,7 @@
   $result = mysql_query($query, $link);
   
   while($row = mysql_fetch_assoc($result)){
-    echo '<div class="asked-question well"><div class="question-text">' . $row['question'] . '</div><hr/><div class="submit-details"><div class="submit-name">' . $row['last_name'] . ', ' . $row['first_name'] . '</div></div></div>';;
+    echo '<div class="asked-question well"><div class="question-text">' . $row['question'] . '</div><hr/><div class="submit-details"><div class="submit-name">' . $row['last_name'] . ', ' . $row['first_name'] . '</div></div></div>';
   }
   
   mysql_close($link);

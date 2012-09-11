@@ -10,6 +10,10 @@ a:hover, a:active{
   color: #b00101;
 }
 
+.hide{
+  display: none;
+}
+
 .submit-name{
   font-size: 16px;
   font-weight: bold;

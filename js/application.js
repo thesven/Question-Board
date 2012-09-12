@@ -23,13 +23,7 @@ var formHandler = {
         
         switch(data.status){
           case "success":
-
-            $("#question-form").find(":input").each(function(){
-              $(this).val('');
-            });
-
-            feed.update();
-            
+            console.log('success entering data into db');
             break;
           case "unable to insert":
             break;
@@ -46,6 +40,8 @@ var formHandler = {
 
 var feed = {
   
+  timestamp: null,
+  
   update: function(){
     $.ajax({
       url: './question_render.php',
@@ -55,32 +51,64 @@ var feed = {
         $("#question-display").html(data);
       }
     });
+  },
+  
+  longpoll: function(){
+    
+    var pollURL = './get_question_data.php?timestamp=' + feed.timestamp;
+    console.log('starting longpoll: ' + pollURL);
+    
+    $.ajax({
+      type: 'GET',
+      url: pollURL,
+      async: true,
+      cache: false,
+      success: function(data){
+        var json = eval('(' + data + ')');
+        
+        if(json['data'] != ''){
+          $("#question-display").html(json['data']);
+        }
+        feed.timestamp = json['timestamp'];
+        setTimeout('feed.longpoll()', 1000);
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        console.log('error performing longpoll');
+        setTimeout('feed.longpoll()', 15000);
+      }
+    });
+    
   }
   
 };
 
-function getParameterByName(name)
-{
-  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-  var regexS = "[\\?&]" + name + "=([^&#]*)";
-  var regex = new RegExp(regexS);
-  var results = regex.exec(window.location.search);
-  if(results == null)
-    return "";
-  else
-    return decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+var url = {
+  
+  getParameterByName: function(name){
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(window.location.search);
+    if(results == null)
+      return "";
+    else
+      return decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  
+};
 
 $(function(){
   
-  var displayMode = getParameterByName('display');
+  /*var displayMode = url.getParameterByName('display');
   console.log('Display Mode: ' + displayMode);
   
   if(displayMode == 'large'){
     $("#question-submission").addClass('hide');
     $("#question-display").removeClass('span6').addClass('span12');
     window.setInterval(feed.update, 10000); //five seconds
-  }
+  }*/
+  
+  feed.longpoll();
   
   $("#question-form").validate({
 		rules: {

@@ -42,12 +42,6 @@
         
         <div id="question-display" class="span6">
           
-          <?php
-          
-            require_once('./question_render.php');
-          
-          ?>
-          
         </div>
         
         <div id="question-submission" class="span6">

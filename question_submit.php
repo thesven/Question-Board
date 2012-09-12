@@ -14,12 +14,7 @@ if(isset($_POST['first_name'], $_POST['last_name'], $_POST['email_address'], $_P
   
   if(mysql_query($query, $link)){
     $response = array(
-      'status' => 'success',
-      'info' => array(
-        'fname' => $fname,
-        'lname' => $lname,
-        'question' => $question
-      )
+      'status' => 'success'
     );
     
     mysql_close($link);

@@ -53,13 +53,15 @@
         <div id="question-submission" class="span6">
           <div class="well">
             <h3>Please Submit a Question!</h3>
-            <form action="" method="post">
+            <form id="question-form" action="" method="post">
               <label for="first_name">First Name:</label><input type="text" name="first_name" value="" id="first_name">
               <label for="last_name">Last Name:</label><input type="text" name="last_name" value="" id="last_name">
               <label for="email_address">Email Address:</label><input type="text" name="email_address" value="" id="email_address">
               <label for="question">Question:</label><textarea id="question" name="question" rows="8" cols="40"></textarea>
+              <div>
+                <button type="submit" id="question-submit-btn" class="btn btn-large">Submit Question</button>
+              </div>
             </form>
-            <button type="button" id="question-submit-btn" class="btn btn-large">Submit Question</button>
           </div>
         </div>
         
@@ -71,6 +73,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="./js/lib/jquery-validation-1.9.0/jquery.validate.min.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/application.js" type="text/javascript"></script>
 

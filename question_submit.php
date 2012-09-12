@@ -1,5 +1,7 @@
 <?php
 
+require_once('./settings.php');
+
 if(isset($_POST['first_name'], $_POST['last_name'], $_POST['email_address'], $_POST['question'])){
   
   $fname = mysql_real_escape_string($_POST['first_name']);
@@ -7,8 +9,8 @@ if(isset($_POST['first_name'], $_POST['last_name'], $_POST['email_address'], $_P
   $email = mysql_real_escape_string($_POST['email_address']);
   $question = mysql_real_escape_string($_POST['question']);
   
-  $link = mysql_connect('127.0.0.1:33066', 'drupaluser', '') or die("Could not connect: " . mysql_error());
-  mysql_select_db('oao-questions' ,$link) or die("Could no select DB: " . mysql_error());
+  $link = mysql_connect($settings['db']['host'], $settings['db']['user'], $settings['db']['pass']) or die("Could not connect: " . mysql_error());
+  mysql_select_db($settings['db']['database'] ,$link) or die("Could no select DB: " . mysql_error());
   
   //check for duplicate questions
   $duplicate = false;

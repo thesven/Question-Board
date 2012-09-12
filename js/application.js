@@ -33,8 +33,13 @@ var formHandler = {
             
             break;
           case "unable to insert":
+            $("#message-display").html('<div class="alert alert-error fade in"><button type="button" class="close" data-dismiss="alert">×</button><strong>Sorry!</strong> We were unable to save your question</div>');
             break;
           case "insufficient info":
+            $("#message-display").html('<div class="alert alert-error fade in"><button type="button" class="close" data-dismiss="alert">×</button><strong>Sorry!</strong> There was not enough information supplied</div>');
+            break;
+          case "duplicate question":
+            $("#message-display").html('<div class="alert alert-error fade in"><button type="button" class="close" data-dismiss="alert">×</button><strong>Sorry!</strong> That question has already been asked</div>');
             break;
         }
         

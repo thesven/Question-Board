@@ -40,6 +40,10 @@
           </div>
         </div>
         
+        <div id="message-display" class="span12">
+          
+        </div>
+        
         <div id="question-display" class="span6">
           
         </div>
@@ -47,6 +51,7 @@
         <div id="question-submission" class="span6">
           <div class="well">
             <h3>Please Submit a Question!</h3>
+            <hr/>
             <form id="question-form" action="" method="post">
               <label for="first_name">First Name:</label><input type="text" name="first_name" value="" id="first_name">
               <label for="last_name">Last Name:</label><input type="text" name="last_name" value="" id="last_name">

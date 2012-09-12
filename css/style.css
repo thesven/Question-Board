@@ -1,5 +1,10 @@
 body{
-  font-family: 'PT Serif Caption', serif;;
+  
+}
+
+h1, h2, h3, h4, h5, h6{
+  color: #EE2E24;
+  font-family: 'PT Serif Caption', serif;
 }
 
 a, a:visited{
@@ -14,9 +19,15 @@ a:hover, a:active{
   display: none;
 }
 
+.hero-unit h1{
+  color: #EE2E24;
+  font-family: 'PT Serif Caption', serif;
+}
+
 .submit-name{
   font-size: 16px;
   font-weight: bold;
+  font-family: 'PT Serif Caption', serif;
 }
 
 label.error{
